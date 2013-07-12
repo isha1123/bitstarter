@@ -4,14 +4,9 @@ var express = require('express');
 
 var app = express.createServer(express.logger());
 
-var fileName = "Index.html";
+var fileName = "index.html";
 
-var buf = new Buffer(256);
-
-buf = fs.readFileSync(fileName);
-
-var outData = buf.toString('utf8');
-
+fs.readFile(fileName, 'utf8', function(err, outData));
 
 app.get('/', function(request, response) {
   response.send(outData);
